@@ -1,4 +1,5 @@
 const { check, validationResult } = require("express-validator");
+const User = require("../models/User");
 
 const formRegisterContact = async (req, res, next) => {
   await check("name")
@@ -40,9 +41,10 @@ const formRegisterContact = async (req, res, next) => {
 };
 
 const createRegister = async (content) => {
-  const { name, email, cellphone, topic, message, asociate_data } = content;
+  const { name, email, topic, message } = content;
+  await User.create(content);
 
-  return { msg: "registrado" };
+  return { status: 200, msg: "registered successfully" };
 };
 
 module.exports = formRegisterContact;
