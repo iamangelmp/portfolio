@@ -10,6 +10,17 @@ router.get("/", function (req, res, next) {
 
 router.get("/getRepositories", findAllRepositories);
 
+// {
+//   "name":"",
+//   "email":"",
+//   "cellphone":"",
+//   "topic": "",
+//   "message":"",
+//   "asociate_data":{
+//       "ip":"",
+//       "browser":""
+//   }
+// }
 router.post("/formContact", formRegisterContact);
 
 module.exports = router;

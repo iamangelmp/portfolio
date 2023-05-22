@@ -1,5 +1,6 @@
 const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
+const { sendMail } = require("../controllers/mail.controller");
 
 const formRegisterContact = async (req, res, next) => {
   await check("name")
@@ -41,9 +42,9 @@ const formRegisterContact = async (req, res, next) => {
 };
 
 const createRegister = async (content) => {
-  const { name, email, topic, message } = content;
   await User.create(content);
-
+  content.code = "contact";
+  await sendMail(content);
   return { status: 200, msg: "registered successfully" };
 };
 
