@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const findAllRepositories = require("../controllers/git.controller");
 const formRegisterContact = require("../controllers/user.controller");
+const chatUser = require("../controllers/chat.controller");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -22,5 +23,7 @@ router.get("/getRepositories", findAllRepositories);
 //   }
 // }
 router.post("/formContact", formRegisterContact);
+
+router.post("/message", chatUser);
 
 module.exports = router;
