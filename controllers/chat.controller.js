@@ -1,4 +1,4 @@
-const data = require("../connection/data");
+const Dictionary = require("../models/Dictionary");
 
 const chatUser = async (req, res, next) => {
   const msg = req.body.msg;
@@ -11,7 +11,9 @@ function formatterMessage(text) {
 }
 
 const readMessage = async (msg) => {
-  return formatterMessage(msg);
+  const context = await Dictionary.find();
+
+  return context; //formatterMessage(context);
 };
 
 const responseMessage = async () => {};
